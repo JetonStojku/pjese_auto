@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import Marka
 
-# Register your models here.
+
+class MarkaAdmin(admin.ModelAdmin):
+    list_display = ('id', 'emer')
+
+admin.site.register(Marka, MarkaAdmin)
