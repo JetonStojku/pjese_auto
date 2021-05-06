@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import models
+from auto.models import Marka, Kategoria, Lenda_Djegese
 
 
 # Create your models here.
@@ -9,9 +10,9 @@ class Produkt(models.Model):
     serial = models.CharField(max_length=200)
     vit_prodhimi_f = models.IntegerField()
     vit_prodhimi_m = models.IntegerField()
-    marka = models.CharField(max_length=200)
-    kategoria = models.CharField(max_length=200)
-    lenda_djegese = models.CharField(max_length=200)
+    marka = models.ForeignKey(Marka, on_delete=models.DO_NOTHING)
+    kategoria = models.ForeignKey(Kategoria, on_delete=models.DO_NOTHING)
+    lenda_djegese = models.ForeignKey(Lenda_Djegese, on_delete=models.DO_NOTHING)
     cmim_b = models.IntegerField()
     cmim_sh = models.IntegerField()
     sasia = models.IntegerField()
@@ -20,5 +21,3 @@ class Produkt(models.Model):
 
     def __str__(self):
         return self.serial
-
-
